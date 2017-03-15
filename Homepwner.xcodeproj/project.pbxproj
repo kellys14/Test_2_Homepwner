@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4641F5E91E799F46007D7DCF /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4641F5E81E799F46007D7DCF /* ItemCell.swift */; };
 		4751C03A1E76A3FD007C9D57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4751C0391E76A3FD007C9D57 /* AppDelegate.swift */; };
 		4751C03F1E76A3FD007C9D57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4751C03D1E76A3FD007C9D57 /* Main.storyboard */; };
 		4751C0411E76A3FD007C9D57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4751C0401E76A3FD007C9D57 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4641F5E81E799F46007D7DCF /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		4751C0361E76A3FD007C9D57 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4751C0391E76A3FD007C9D57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4751C03E1E76A3FD007C9D57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				4751C0391E76A3FD007C9D57 /* AppDelegate.swift */,
 				4751C0671E76A62B007C9D57 /* ItemsViewController.swift */,
 				4751C03D1E76A3FD007C9D57 /* Main.storyboard */,
+				4641F5E81E799F46007D7DCF /* ItemCell.swift */,
 				4751C0691E76A93E007C9D57 /* Item.swift */,
 				4751C06B1E76AF05007C9D57 /* ItemStore.swift */,
 				4751C0401E76A3FD007C9D57 /* Assets.xcassets */,
@@ -269,6 +272,7 @@
 				4751C0681E76A62B007C9D57 /* ItemsViewController.swift in Sources */,
 				4751C06C1E76AF05007C9D57 /* ItemStore.swift in Sources */,
 				4751C03A1E76A3FD007C9D57 /* AppDelegate.swift in Sources */,
+				4641F5E91E799F46007D7DCF /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

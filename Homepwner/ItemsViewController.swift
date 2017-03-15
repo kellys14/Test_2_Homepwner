@@ -52,6 +52,9 @@ class ItemsViewController: UITableViewController {
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        
+        tableView.rowHeight = UITableViewAutomaticDimension // pg. 216
+        tableView.estimatedRowHeight = 65 // pg. 216
     }
     
     override func tableView(_ tableView: UITableView,
@@ -64,15 +67,19 @@ class ItemsViewController: UITableViewController {
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Get a new or recyclced cell - pg. 192
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
+        
         
         // Set the text on the cell with description of the item
         // that is at the Nth index of items, where n = row of this cell
         // will appear in on the tableview
         let item = itemStore.allItems[indexPath.row]
         
-        cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        // Configure the cell with the Item  // pg. 215 w/ 3 lines below
+        cell.nameLabel.text = item.name
+        cell.serialNumberLabel.text = item.serialNumber
+        cell.valueLabel.text = "$\(item.valueInDollars)"
         
         return cell
     }
