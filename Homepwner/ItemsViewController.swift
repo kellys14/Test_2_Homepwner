@@ -141,6 +141,12 @@ class ItemsViewController: UITableViewController {
             preconditionFailure("Unexpected segue identifier.")
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) { // pg. 246
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
 }
 
 
