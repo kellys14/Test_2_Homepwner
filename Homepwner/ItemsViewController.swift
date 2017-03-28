@@ -12,7 +12,15 @@ class ItemsViewController: UITableViewController {
     
     var itemStore: ItemStore!
     
-    @IBAction func addNewItem(_ sender: UIButton) { // pg. 201
+    required init?(coder aDecoder: NSCoder) { // pg. 255
+        // Creates edit button on the left side of the navigation bar
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+   // @IBAction func addNewItem(_ sender: UIButton) { // pg. 201
+    @IBAction func addNewItem(_ sender: UIBarButtonItem) { // pg. 254
         // Create a new item and add it to the store
         let newItem = itemStore.createItem()
         
@@ -25,7 +33,8 @@ class ItemsViewController: UITableViewController {
         }
     }
     
-    @IBAction func toggleEditingMode(_ sender: UIButton) { // pg. 199
+    // Code below deleted on pg. 256 as editing mode in header is replaced with nav bar editing
+/*    @IBAction func toggleEditingMode(_ sender: UIButton) { // pg. 199
         // If you are currently in editing mode...
         if isEditing {
             //Change text of button to inform user of state
@@ -41,17 +50,18 @@ class ItemsViewController: UITableViewController {
             // Enter editing mode
             setEditing(true, animated: true)
         }
-    }
+    } */
     
-    override func viewDidLoad() { //
+    override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get the height of the status bar
+        // Code below deleted on pg. 255, as header was replaced with nav bar
+/*        // Get the height of the status bar
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
+        tableView.scrollIndicatorInsets = insets */
         
         tableView.rowHeight = UITableViewAutomaticDimension // pg. 216
         tableView.estimatedRowHeight = 65 // pg. 216
@@ -147,6 +157,7 @@ class ItemsViewController: UITableViewController {
         
         tableView.reloadData()
     }
+
 }
 
 

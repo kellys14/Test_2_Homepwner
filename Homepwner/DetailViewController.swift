@@ -20,7 +20,12 @@ class DetailViewController: UIViewController,  UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    var item: Item!
+    var item: Item! {
+        // Added property observer to the item property that updates title of navigationItem - pg. 253
+        didSet {
+            navigationItem.title = item.name
+        }
+    }
     
     let numberFormatter: NumberFormatter = { // pg.236
         let formatter = NumberFormatter()

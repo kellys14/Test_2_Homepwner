@@ -18,38 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="OzT-ge-dnD">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OkQ-8q-KVc">
-                                    <rect key="frame" x="191.5" y="15" width="175.5" height="30"/>
-                                    <state key="normal" title="Add"/>
-                                    <connections>
-                                        <action selector="addNewItem:" destination="Hhr-sB-s5e" eventType="touchUpInside" id="UWc-bt-CUS"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52H-eP-31C">
-                                    <rect key="frame" x="8" y="15" width="175.5" height="30"/>
-                                    <state key="normal" title="Edit"/>
-                                    <connections>
-                                        <action selector="toggleEditingMode:" destination="Hhr-sB-s5e" eventType="touchUpInside" id="9Jw-1J-HMQ"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="OkQ-8q-KVc" firstAttribute="leading" secondItem="52H-eP-31C" secondAttribute="trailing" constant="8" id="1aN-hL-XHK"/>
-                                <constraint firstItem="OkQ-8q-KVc" firstAttribute="centerY" secondItem="OzT-ge-dnD" secondAttribute="centerY" id="IH2-8e-Y59"/>
-                                <constraint firstItem="52H-eP-31C" firstAttribute="leading" secondItem="OzT-ge-dnD" secondAttribute="leading" constant="8" id="dUv-ER-7wG"/>
-                                <constraint firstItem="52H-eP-31C" firstAttribute="centerY" secondItem="OzT-ge-dnD" secondAttribute="centerY" id="lrk-ha-mz2"/>
-                                <constraint firstItem="OkQ-8q-KVc" firstAttribute="width" secondItem="52H-eP-31C" secondAttribute="width" id="mJa-33-XRB"/>
-                                <constraint firstAttribute="trailing" secondItem="OkQ-8q-KVc" secondAttribute="trailing" constant="8" id="zkE-11-sSv"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="65" id="hPq-65-Jcu" customClass="ItemCell" customModule="Homepwner" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hPq-65-Jcu" id="UwB-hO-eXi">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
@@ -97,7 +68,13 @@
                             <outlet property="delegate" destination="Hhr-sB-s5e" id="uXG-Qf-OeA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Homepwner" id="i49-Bd-PwD"/>
+                    <navigationItem key="navigationItem" title="Homepwner" id="i49-Bd-PwD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jy3-k9-VA0">
+                            <connections>
+                                <action selector="addNewItem:" destination="Hhr-sB-s5e" id="cxU-pi-KRO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2i-yI-ATg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
