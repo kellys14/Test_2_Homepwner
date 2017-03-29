@@ -27,6 +27,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         else {
             imagePicker.sourceType = .photoLibrary
         }
+        
         imagePicker.delegate = self
         
         // Place image picker on the screen
