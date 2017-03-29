@@ -8,12 +8,30 @@
 
 import UIKit
 
-class DetailViewController: UIViewController,  UITextFieldDelegate {
+class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet var nameField: UITextField! // pg. 234 for 4 outlets
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var valueField: UITextField!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
+    @IBAction func takePicture(_ sender: UIBarButtonItem) {
+        
+        let imagePicker = UIImagePickerController()
+        
+        // If the device has a camera, take a picture; otherwise,
+        // just pick from the photo library
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        }
+        else {
+            imagePicker.sourceType = .photoLibrary
+        }
+        imagePicker.delegate = self
+        
+        // Place image picker on the screen
+        present(imagePicker, animated: true, completion: nil)
+    }
     
     // Action when nothing is tapped to kill keyboard - pg. 250
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
@@ -26,6 +44,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate {
             navigationItem.title = item.name
         }
     }
+    var imageStore: ImageStore!
     
     let numberFormatter: NumberFormatter = { // pg.236
         let formatter = NumberFormatter()
@@ -50,6 +69,14 @@ class DetailViewController: UIViewController,  UITextFieldDelegate {
         valueField.text =
             numberFormatter.string(from: NSNumber(value: item.valueInDollars)) // pg. 236
         dateLabel.text = dateFormatter.string(from: item.dateCreated) // pg. 236
+        
+        // Get the item key - pg. 277
+        let key = item.itemKey
+        
+        // If there is an associated image with the item
+        // display it on the image view - pg. 277
+        let imageToDisplay = imageStore.image(forKey: key)
+        imageView.image = imageToDisplay
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,5 +102,21 @@ class DetailViewController: UIViewController,  UITextFieldDelegate {
         // Delegate that is called whenever the return button is pressed
         textField.resignFirstResponder()
         return true
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        // Getpicked image from info dictionary
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // Store the image in the ImageStore for the item's key
+        imageStore.setImage(image, forKey: item.itemKey)
+        
+        // Put that image on the screen in the image view
+        imageView.image = image
+        
+        // Take image picker off the screen
+        // you must call this dismiss method
+        dismiss(animated: true, completion: nil) // pg. 400
     }
 }

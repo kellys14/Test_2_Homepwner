@@ -11,6 +11,7 @@ import UIKit
 class ItemsViewController: UITableViewController {
     
     var itemStore: ItemStore!
+    var imageStore: ImageStore!
     
     required init?(coder aDecoder: NSCoder) { // pg. 255
         // Creates edit button on the left side of the navigation bar
@@ -115,6 +116,9 @@ class ItemsViewController: UITableViewController {
             
             // Remove the item from the store
             self.itemStore.removeItem(item)
+                                                    
+            // Remove the item's image from the image store - pg. 276
+            self.imageStore.deleteImage(forKey: item.itemKey)
             
             // Also remove that row from the table view with an animation
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -146,6 +150,7 @@ class ItemsViewController: UITableViewController {
                     let detailViewController
                             = segue.destination as! DetailViewController
                     detailViewController.item = item
+                    detailViewController.imageStore = imageStore
                 }
         default:
             preconditionFailure("Unexpected segue identifier.")
