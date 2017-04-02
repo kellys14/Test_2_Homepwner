@@ -23,9 +23,11 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         // just pick from the photo library
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = true // Allows editing but doesn't save
         }
         else {
             imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = true // Allows editing but doesn't save
         }
         
         imagePicker.delegate = self
@@ -107,7 +109,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        // Getpicked image from info dictionary
+        // Get picked image from info dictionary
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         // Store the image in the ImageStore for the item's key
