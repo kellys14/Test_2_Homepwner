@@ -15,13 +15,49 @@ class ImageStore: NSObject {
     
     func setImage(_ image: UIImage, forKey key: String) {
         cache.setObject(image, forKey: key as NSString)
+        
+        // Create full URL for image - pg. 296
+        let url = imageURL(forKey: key)
+        
+        // Turn image into JPEG data - pg. 296
+        if let data = UIImageJPEGRepresentation(image, 0.5) {
+            // Write it to full URL
+            let _ = try? data.write(to: url, options: [.atomic])
+        }
     }
     
     func image(forKey key: String) -> UIImage? {
-        return cache.object(forKey: key as NSString)
+        if let existingImage = cache.object(forKey: key as NSString) { // pg. 296
+            return existingImage
+        }
+        
+        let url = imageURL(forKey: key) // pg. 296
+        guard let imageFromDisk = UIImage(contentsOfFile: url.path) else {
+            return nil
+        }
+        
+        cache.setObject(imageFromDisk, forKey: key as NSString) // pg. 296
+        return imageFromDisk
     }
     
     func deleteImage(forKey key: String) {
         cache.removeObject(forKey: key as NSString)
+        
+        let url = imageURL(forKey: key)
+        do {
+            try FileManager.default.removeItem(at: url) // pg. 299
+        } catch let deleteError {
+            print("Error removing the image from disk: \(deleteError)")
+        }
+    }
+    
+    func imageURL(forKey key: String) -> URL { // pg. 295
+        
+        // Creates URL for the image in the documents directory
+        let documentsDirectories =
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = documentsDirectories.first!
+        
+        return documentDirectory.appendingPathComponent(key)
     }
 }

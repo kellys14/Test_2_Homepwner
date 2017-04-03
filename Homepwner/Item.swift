@@ -8,13 +8,14 @@
 
 import UIKit
 
-class Item: NSObject {
+class Item: NSObject, NSCoding {
     var name: String
     var valueInDollars: Int
     var serialNumber: String?
     let dateCreated: Date
     let itemKey: String
     
+    // MARK: Initializers
     init(name: String, serialNumber: String?, valueInDollars: Int) { // designated initializer - pg. 181
         self.name = name
         self.valueInDollars = valueInDollars
@@ -45,6 +46,32 @@ class Item: NSObject {
         else {
             self.init(name: "", serialNumber: nil, valueInDollars: 0)
         }
+    }
+    
+    // MARK: Archiving methods
+    func encode(with aCoder: NSCoder) { // pg. 284
+        // Function to encode all of Item's properities into the NSCoder object
+        // that is passed as an arguement. While saving, NSCoder is used to write
+        // out a stream of data, that will be organized as key-value pairs
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(dateCreated, forKey: "dateCreated")
+        aCoder.encode(itemKey, forKey: "itemKey")
+        aCoder.encode(serialNumber, forKey: "serialNumber")
+        
+        aCoder.encode(valueInDollars, forKey: "valueInDollars")
+    }
+    
+    required init(coder aDecoder: NSCoder) { // pg. 286
+        // This method grabs all objects that were encoded in encode(with:) and
+        // assigns them to the appropriate property
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        dateCreated = aDecoder.decodeObject(forKey: "dateCreated") as! Date
+        itemKey = aDecoder.decodeObject(forKey: "itemKey") as! String
+        serialNumber = aDecoder.decodeObject(forKey: "serialNumber") as! String?
+        
+        valueInDollars = aDecoder.decodeInteger(forKey: "valueInDollars")
+        
+        super.init() 
     }
 }
 
