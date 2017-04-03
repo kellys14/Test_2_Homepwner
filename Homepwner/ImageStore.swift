@@ -19,8 +19,9 @@ class ImageStore: NSObject {
         // Create full URL for image - pg. 296
         let url = imageURL(forKey: key)
         
-        // Turn image into JPEG data - pg. 296
-        if let data = UIImageJPEGRepresentation(image, 0.5) {
+        if let data = UIImagePNGRepresentation(image) { // pg. 300
+            // Changed from JPEG to PNG for Chap. 16 bronze challenge
+            
             // Write it to full URL
             let _ = try? data.write(to: url, options: [.atomic])
         }
