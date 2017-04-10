@@ -194,6 +194,11 @@
                                             <action selector="takePicture:" destination="vQv-ju-Kqk" id="biE-07-k4k"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="trash" id="wiW-PZ-9f6">
+                                        <connections>
+                                            <action selector="clearPicture:" destination="vQv-ju-Kqk" id="HqQ-Ra-Dde"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

@@ -38,7 +38,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         present(imagePicker, animated: true, completion: nil)
     }
     
-    @IBAction func clearPicture(_ sender: UIButton) {
+    @IBAction func clearPicture(_ sender: UIBarButtonItem) {
        // if picBool == true {
             imageStore.deleteImage(forKey: item.itemKey)
        // }
