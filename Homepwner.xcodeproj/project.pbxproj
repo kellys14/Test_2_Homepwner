@@ -20,6 +20,7 @@
 		4751C0681E76A62B007C9D57 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4751C0671E76A62B007C9D57 /* ItemsViewController.swift */; };
 		4751C06A1E76A93E007C9D57 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4751C0691E76A93E007C9D57 /* Item.swift */; };
 		4751C06C1E76AF05007C9D57 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4751C06B1E76AF05007C9D57 /* ItemStore.swift */; };
+		4796D8811E9B496600F93163 /* DateChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4796D8801E9B496600F93163 /* DateChange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		4751C0671E76A62B007C9D57 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		4751C0691E76A93E007C9D57 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		4751C06B1E76AF05007C9D57 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		4796D8801E9B496600F93163 /* DateChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateChange.swift; path = ../DateChange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				473409261E8A4BE20085690C /* customTextField.swift */,
+				4796D8801E9B496600F93163 /* DateChange.swift */,
 				4751C0391E76A3FD007C9D57 /* AppDelegate.swift */,
 				4751C0671E76A62B007C9D57 /* ItemsViewController.swift */,
 				4751C03D1E76A3FD007C9D57 /* Main.storyboard */,
@@ -286,6 +289,7 @@
 				473409231E8A1C780085690C /* DetailViewController.swift in Sources */,
 				4751C03A1E76A3FD007C9D57 /* AppDelegate.swift in Sources */,
 				4641F5E91E799F46007D7DCF /* ItemCell.swift in Sources */,
+				4796D8811E9B496600F93163 /* DateChange.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
