@@ -75,6 +75,14 @@ class ItemsViewController: UITableViewController {
         cell.serialNumberLabel.text = item.serialNumber
         cell.valueLabel.text = "$\(item.valueInDollars)"
         
+        // Chapter 12 Bronze Challenge
+        if item.valueInDollars >= 50 {
+            cell.valueLabel.textColor = UIColor.red
+        }
+        else {
+            cell.valueLabel.textColor = UIColor.green
+        }
+        
         return cell
     }
     
@@ -94,7 +102,8 @@ class ItemsViewController: UITableViewController {
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             ac.addAction(cancelAction)
             
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive,
+            // Chapter 11 Bronze - Changed title to "Remove"
+            let deleteAction = UIAlertAction(title: "Remove", style: .destructive,
                                                  handler: { (action) -> Void in
             
             // Remove the item from the store

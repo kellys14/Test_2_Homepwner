@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    
     @IBOutlet var nameField: UITextField! // pg. 234 for 4 outlets
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var valueField: UITextField!
@@ -18,6 +19,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
     @IBAction func takePicture(_ sender: UIBarButtonItem) {
         
         let imagePicker = UIImagePickerController()
+     //   var cameraOverlayView = UIView() // ****CHAPTER 15 GOLD*****
         
         // If the device has a camera, take a picture; otherwise,
         // just pick from the photo library
@@ -34,6 +36,12 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         
         // Place image picker on the screen
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func clearPicture(_ sender: UIButton) {
+       // if picBool == true {
+            imageStore.deleteImage(forKey: item.itemKey)
+       // }
     }
     
     // Action when nothing is tapped to kill keyboard - pg. 250
@@ -70,7 +78,7 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         nameField.text = item.name
         serialNumberField.text = item.serialNumber
         valueField.text =
-            numberFormatter.string(from: NSNumber(value: item.valueInDollars)) // pg. 236
+        numberFormatter.string(from: NSNumber(value: item.valueInDollars)) // pg. 236
         dateLabel.text = dateFormatter.string(from: item.dateCreated) // pg. 236
         
         // Get the item key - pg. 277
@@ -106,9 +114,10 @@ class DetailViewController: UIViewController,  UITextFieldDelegate, UINavigation
         textField.resignFirstResponder()
         return true
     }
+    var picBool: Bool = false
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+        picBool = true
         // Get picked image from info dictionary
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
